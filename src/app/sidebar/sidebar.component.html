@@ -1,0 +1,24 @@
+<div *ngIf="team" class="sidebar" data-color="gray">
+  <div class="logo">
+    <a href="/" class="simple-text">Pojeto <i class="fa fa-futbol-o" aria-hidden="true"></i></a>
+  </div>
+
+  <div class="sidebar-wrapper">
+    <div class="nav-container">
+      <ul class="nav">
+        <li routerLinkActive="active">
+          <a routerLink="/dashboard"><i class="material-icons">dashboard</i><p>Dashboard</p></a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/transfermarket"><i class="material-icons">store</i><p>Mercado</p></a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/bid/list"><i class="material-icons">library_books</i><p>Lista de Lances</p></a>
+        </li> 
+        <li routerLinkActive="active">
+          <a routerLink="/notification/list"><i class="fa fa-bell" aria-hidden="true"></i> <p>Notificações</p></a>
+        </li>        
+      </ul>
+    </div>
+  </div>
+</div>

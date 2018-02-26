@@ -1,0 +1,41 @@
+<h1 mat-dialog-title class="primary-color">Habilidades</h1>
+<mat-dialog-content class="accent-color">
+
+    <mat-card>
+        <mat-card-header>
+            <img mat-card-avatar src="{{data.player.headshotImgUrl}}">            
+            <mat-card-title>{{ data.player.name }} <span [ngClass]="getRatingColor(data.player.rating)">{{ data.player.rating }}</span></mat-card-title>
+            <mat-card-subtitle>{{ data.player.position }} - {{ data.player.clubName }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+        <table class="table">
+            <thead class="text-gray">
+                <th>Altura</th>
+                <th>Peso</th>
+                <th>Idade</th>
+                <th>Perna Boa</th>
+                <th>WR</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ data.player.height }} cm</td>
+                    <td>{{ data.player.weight }}</td>
+                    <td>{{ data.player.age }}</td>                    
+                    <td>{{ data.player.foot }}</td>
+                    <td>{{ data.player.atkWorkRate | truncate: 1 }} \ {{ data.player.defWorkRate | truncate : 1 }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <thead class="text-gray">
+                <th *ngFor="let attribute of attributesName">{{ attribute }}</th>              
+            </thead>
+            <tbody>
+                <tr>
+                    <td *ngFor="let att of data.player.attributes" ><span [ngClass]="getAttributeColor(att.value)">{{ att.value }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+        </mat-card-content>
+    </mat-card>
+</mat-dialog-content>

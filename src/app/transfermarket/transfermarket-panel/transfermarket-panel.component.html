@@ -1,0 +1,129 @@
+<div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card card-stats text-center">
+            <div class="card-footer">
+                <p class="category">Dinheiro Disponível
+                    <i class="material-icons">attach_money</i>
+                </p>
+                <h3 class="title">R$ {{ team?.budget }},00</h3>
+
+            </div>
+            <div class="card-footer">
+                <div class="">
+                    <button routerLink="/transfermarket" class="btn btn-button background-gray-3">Voltar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="card">
+
+        <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
+            <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
+                <span class="mat-title">Jogadores</span>
+            </span>
+            <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
+                <span *ngIf="(selectable && !selectedRows.length) || !selectable" class="mat-title"></span>
+                <span *ngIf="selectedRows.length && selectable" class="mat-body-1">0 item(s) selected</span>
+            </span>
+            <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Pesquisar" (searchDebounce)="search($event)"
+                flex>
+            </td-search-box>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+
+
+    <mat-toolbar>
+        <div class="col-md-1"></div>
+        <div class="col-md-1">Rating</div>
+        <div class="col-md-2">Nome</div>
+        <div class="col-md-2">Clube</div>        
+        <div class="col-md-2">Posição</div>
+        <div class="col-md-2">Valor</div>
+        <div class="col-md-2 text-right"></div>
+    </mat-toolbar>
+
+
+
+    <div class="card">
+
+        <div *ngFor="let shop of filteredData">
+            <mat-card style="padding-top: 10px;padding-bottom: 15px;" [ngClass]="getBackground(shop)">
+                <mat-card-header>
+                    <div class="col-md-1">
+                       <!-- <div mat-card-avatar style="background-image: url('{{shop.player.headshotImgUrl}}');  background-size: cover;"></div>-->
+                    </div>
+                    <div class="col-md-1">
+                        <h5 style="font-weight: bold">
+                            <span [ngClass]="getRatingColor(shop.rating)">{{shop.rating}}</span>
+                        </h5>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>{{shop.name}}</h5>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>{{shop.clubName}}</h5>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>{{shop.position}}</h5>
+                    </div>
+                    <div class="col-md-1">
+                        <h5>$ {{shop.bidValue}},00</h5>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <h5>
+                            <div class="col-md-9">
+                                <button mat-raised-button color="blue" class="background-gray-3" (click)="onBid(shop.player)">
+                                    <i class="fa fa-gavel" aria-hidden="true"></i>
+                                </button>
+
+                            </div>
+                            <div class="col-md-3">
+                                <p (click)="onExpand(shop)">
+                                    <i class="{{shop.icon}}" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </h5>
+                    </div>
+                </mat-card-header>
+            </mat-card>
+
+            <mat-expansion-panel [expanded]="shop.expanded">
+                <p>
+                    <app-attributes-item [player]="shop.player"></app-attributes-item>
+                </p>
+            </mat-expansion-panel>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div *tdLoading="'overlayStarSyntax'; mode:'indeterminate'; type:'circle'; strategy:'overlay'; color:'primary'">
+            </div>
+        </div>
+        <div class="card">
+            <td-paging-bar #pagingBar2 [total]="transfermarketRest.totalElements" (change)="page($event)">
+                <span td-paging-bar-label hide-xs>Registros por página:</span> {{pagingBar2.range}}
+                <span hide-xs>de {{transfermarketRest.totalElements}}</span>
+                <button mat-raised-button color="blue" (click)="onRefresh()" rel="tooltip" class="background-gray-4" title="Atualizar">
+                    <i class="fa fa-refresh"></i>
+                </button>
+            </td-paging-bar>
+        </div>
+    </div>
+
+
+
+
+
+</div>

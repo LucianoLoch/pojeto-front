@@ -1,0 +1,60 @@
+<div style="height: 100px">
+  <hr>
+  <div class="col-md-6">
+    <table class="table">
+      <thead class="text-gray">
+        <th>Altura</th>
+        <th>Peso</th>
+        <th>Idade</th>
+        <th>Perna Boa</th>
+        <th>WR</th>
+      </thead>
+      <tbody class="text-gray">
+        <tr>
+          <td>{{ player.height }} cm</td>
+          <td>{{ player.weight }}</td>
+          <td>{{ player.age }}</td>
+          <td>{{ player.foot }}</td>
+          <td style="font-weight: bold">{{ player.atkWorkRate[0]}} \ {{ player.defWorkRate[0]}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="col-md-6">
+    
+
+    <app-attribute [attributes]="player.attributes"></app-attribute>
+
+    
+  </div>
+  <hr>
+  
+</div>
+
+
+    <ng-template>
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-3" style="text-align:center">
+                <img src="player.headshotImgUrl">
+            </div>
+            <div class="ui-g-12 ui-md-9">
+                <div class="ui-g">
+                    <div class="ui-g-2 ui-sm-6">Altura: </div>
+                    <div class="ui-g-10 ui-sm-6">{{player.height}}, cm</div>
+                    
+                    <div class="ui-g-2 ui-sm-6">Peso: </div>
+                    <div class="ui-g-10 ui-sm-6">{{player.weight}}</div>
+                    
+                    <div class="ui-g-2 ui-sm-6">Idade: </div>
+                    <div class="ui-g-10 ui-sm-6">{{player.age}}</div>
+                    
+                    <div class="ui-g-2 ui-sm-6">Perna Boa: </div>
+                    <div class="ui-g-10 ui-sm-6">{{player.foot}}</div>
+
+                    <div class="ui-g-2 ui-sm-6">WK: </div>
+                    <div style="font-weight: bold" class="ui-g-10 ui-sm-6">{{ player.atkWorkRate[0]}} \ {{ player.defWorkRate[0]}}</div>
+                </div>
+            </div>
+        </div>
+    </ng-template>

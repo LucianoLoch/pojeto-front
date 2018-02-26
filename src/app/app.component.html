@@ -1,0 +1,36 @@
+<div *ngIf="currentUser" class="wrapper">
+    <app-sidebar *ngIf="team" [team]="team" [currentUser]="currentUser"></app-sidebar>
+    <div class="main-panel">
+        <app-navbar *ngIf="team" [team]="team" [currentUser]="currentUser"></app-navbar>
+        <div class="content">
+            <div class="container-fluid">
+                <router-outlet></router-outlet>
+            </div>
+              <footer *ngIf="currentUser" class="footer">
+                <div class="container-fluid">
+                    <p class="copyright pull-right">
+                        &copy;
+                        <a href="/">Pojeto</a> feito na zueira
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+<div *ngIf="!currentUser" class="wrapper">
+    <div class="main-panel">
+        <div class="content">
+            <div class="container-fluid">
+                <router-outlet></router-outlet>
+                <footer *ngIf="currentUser" class="footer">
+                    <div class="container-fluid">
+                        <p class="copyright pull-right">
+                            &copy;
+                            <a href="/">Pojeto</a> feito na zueira
+                        </p>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="col-lg-6 col-md-12">
+    <div class="card">
+        <div class="card-content">
+            <h4 class="title">Times Cadastrados</h4>
+            <p *ngIf="teams?.length > 0" class="category">{{teams?.length}}</p>
+            <p *ngIf="teams?.length <= 0" class="category">Nenhum time cadastrado até o momento.</p>
+        </div>
+
+        <div *ngIf="teams?.length > 0" class="card-content table-responsive">
+            <p-panel  [toggleable]="true">
+                <table class="table table-hover">
+                    <thead class="text-gray">
+                        <th>Time</th>
+                        <th>Treinador</th>
+                        <th>Dinheiro Disponível</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let team of teams">
+                            <td>{{ team.name }}</td>
+                            <td>{{ team.manager }}</td>
+                            <td>R$ {{ team.budget }},00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="card-footer">
+                    <button mat-raised-button routerLink="/bid/list" class="background-gray-4" title="Atualizar">Ver Todos</button>
+                </div>
+            </p-panel>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-6">
+    <div class="card card-stats">
+        <div class="card-content">
+            <p class="category">Valor Disponível
+                <i class="material-icons">attach_money</i>
+            </p>
+            <h3 class="title">R$ {{ teamsValue }},00</h3>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="col-lg-6 col-md-12">
+    <div class="card">
+        <div class="card-header" data-background-color="gray-4">
+            <h4 class="title">Seus Lances</h4>
+            <p *ngIf="players?.length > 0" class="category">{{players.length}}</p>
+            <p *ngIf="players?.length <= 0" class="category">Você não possuí nenhum lance no momento.</p>
+        </div>
+
+        <div *ngIf="players?.length > 0" class="card-content table-responsive">
+            <td-expansion-panel>
+                <table class="table table-hover">
+                    <thead class="text-gray">
+                        <th>Jogador</th>
+                        <th>Posição</th>                        
+                        <th>Valor do Lance</th>
+                        <th>Valor Inicial</th>                                          
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let player of players">
+                            <td>{{ player.name }}</td>
+                            <td>{{ player.position }}</td>
+                            <td>R$ {{ player.bid.bidValue }},00</td>
+                            <td>R$ {{ player.bid.originalValue }},00</td>                           
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="card-footer">
+                    <button mat-raised-button routerLink="/bid/list" class="background-gray-4" title="Atualizar">Ver Todos</button>
+                </div>
+            </td-expansion-panel>
+        </div>
+    </div>
+</div>

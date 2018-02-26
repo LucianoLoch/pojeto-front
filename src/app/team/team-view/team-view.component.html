@@ -1,0 +1,81 @@
+<div class="row">
+    <div class="col-md-12">
+        <div *ngIf="!loading" class="col-md-6">
+
+
+            <div class="card">
+                <div class="card-header" data-background-color="red">
+                    <h4 class="title">Time</h4>
+                </div>
+
+                <mat-card-content>
+                    <div class="table-responsive">
+                        <table class="table table-condensed">
+                            <tr>
+                                <th>Nome</th>
+                                <td>
+                                    <h4>{{ team?.name }}</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Técnico</th>
+                                <td>
+                                    <h4>{{ team?.manager }}</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Coins</th>
+                                <td>
+                                    <h4><span class="label label-warning">R$ {{ team?.budget }},00</span></h4>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </mat-card-content>
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6" style="padding-bottom: 20px; padding-top: 5px">
+            <div *ngIf="team?.players" class="row">
+                <div class="card">
+                    <div class="card-header" data-background-color="green">
+                        <h4 class="title">Seus Jogadores</h4>
+                    </div>
+
+
+                    <mat-card-content style="padding-bottom: 20px; padding-top: 5px">
+                        <div class="table-responsive">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <th>Jogador</th>
+                                    <th>Posição</th>
+                                    <th>Rating</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let player of team?.players" style="padding-bottom: 5px; padding-top: 5px">
+                                        <td>
+                                            <h5>{{ player.name }}</h5>
+                                        </td>
+                                        <td>
+                                            <h5><span class="label label-primary">{{ player.position}}</span></h5>
+                                        </td>
+                                        <td>
+                                            <h5><span class="label label-success">{{ player.rating}}</span></h5>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </mat-card-content>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!team" class="col-md-8 col-md-offset-2">
+    <mat-card *ngIf="!team" class="text-center">
+        <a class="btn btn-danger" routerLink="/team/create">Cadastrar Time</a>
+    </mat-card>
+</div>

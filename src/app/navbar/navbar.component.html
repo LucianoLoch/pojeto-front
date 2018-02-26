@@ -1,0 +1,48 @@
+<nav class="navbar navbar-transparent navbar-absolute">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div *ngIf="currentUser" class="collapse navbar-collapse">
+      <ul *ngIf="currentUser" class="nav navbar-nav navbar-right">
+        <li *ngIf="team"><a><i class="material-icons">local_atm</i> {{team.budget}}</a></li>
+        <li *ngIf="team" class="dropdown">
+          <a *ngIf="notifications?.length > 0" href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons">notifications</i>
+            <span class="notification">{{notifications?.length}}</span>
+            <p class="hidden-lg hidden-mat">Notificações</p>
+          </a>
+          <ul class="dropdown-menu">
+                <li *ngFor="let not of notifications">
+                  <a href="#">{{ not.notification }}</a>
+                </li>
+                <li><hr></li>  
+                <li>
+                  <a (click)="isReadAll(team.id)">Excluir Todas</a>
+                </li>
+                <li>
+                  <a routerLink="/notification/list">Ver todas as Notificações</a>
+                </li>            
+          
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons">person</i>
+            <p class="hidden-lg hidden-mat">Perfil</p>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/">{{currentUser.nome}}</a></li>
+            <li><a routerLink="/login">Sair</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

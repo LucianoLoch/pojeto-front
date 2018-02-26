@@ -1,0 +1,12 @@
+<table class="table">
+  <thead class="text-gray">
+    <th *ngFor="let att of attributes">{{ att.name }}</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td *ngFor="let at of attributes">
+        <span  style="font-weight: bold" [ngClass]="getAttributeColor(at.value)">{{ at.value }}</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

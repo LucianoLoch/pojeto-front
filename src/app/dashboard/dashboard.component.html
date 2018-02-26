@@ -1,0 +1,5 @@
+<app-team *ngIf="team" [team]="team"></app-team>
+<app-bidlist *ngIf="team" [team]="team"></app-bidlist>
+<app-notification *ngIf="team" [team]="team"></app-notification>
+<app-players *ngIf="team" [players]="team?.players"></app-players>
+

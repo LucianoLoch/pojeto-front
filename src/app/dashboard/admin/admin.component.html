@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header" data-background-color="gray-5">
+                <i *ngIf="!marketOpen" class="fa fa-lock" aria-hidden="true"></i>
+                <i *ngIf="marketOpen" class="fa fa-unlock-alt" aria-hidden="true"></i>
+            </div>
+            <div class="card-content">
+                <h3 *ngIf="!marketOpen" class="title">
+                    <button mat-raised-button (click)="onOpenMarket()" class="background-gray-4" title="Abrir Mercado">Abrir Mercado</button>
+                </h3>
+                <h3 *ngIf="marketOpen" class="title">
+                    <button mat-raised-button (click)="onOpenMarket()" class="background-gray-4" title="Fechar Mercado">Fechar Mercado</button>
+                </h3>
+
+            </div>
+        </div>
+    </div>
+</div>
+<p-tabView>
+    <p-tabPanel header="Lances">
+        <app-list-bid></app-list-bid>
+    </p-tabPanel>
+    <p-tabPanel header="Times">
+        <app-list-team></app-list-team>
+    </p-tabPanel>
+    <p-tabPanel header="Usuários">
+        <app-list-user></app-list-user>
+    </p-tabPanel>
+</p-tabView>

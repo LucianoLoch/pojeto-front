@@ -1,0 +1,33 @@
+.background-gray {
+  background-color: #162935!important;
+  color: white !important;
+}
+
+.background-gray-2 {
+  background-color: #05151E!important; 
+  color: white!important;
+}
+
+.background-gray-3 {
+  background-color: #27404F!important; 
+  color: white!important;
+}
+
+.background-gray-4 {
+  background-color:  #415C6C!important; 
+  color: white!important;
+}
+
+.background-gray-5 {
+  background-color: #617A88 !important; 
+  color: white !important;
+}
+
+.mat-progress-spinner path, .mat-spinner path {
+  stroke: #162935!important;
+}
+
+.mat-expansion-panel-content {
+  overflow: hidden;
+  background-color: #617A88 !important; 
+}

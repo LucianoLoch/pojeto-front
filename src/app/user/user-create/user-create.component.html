@@ -1,0 +1,74 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-2 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="gray">
+                        <h4 class="title">Cadastrar Usuário</h4>
+                    </div>
+                    <div class="card-content">
+                        <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating is-empty" [ngClass]="{ 'has-error': f.submitted && !nome.valid }">
+                                        <label class="control-label">Nome</label>
+                                        <input type="text" class="form-control" name="nome" [(ngModel)]="user.name" #nome="ngModel" required/>
+                                        <div *ngIf="f.submitted && !nome.valid" class="help-block">É obrigatório informar o nome</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating is-empty" [ngClass]="{ 'has-error': f.submitted && !nome.valid }">
+                                        <label class="control-label">Sobrenome</label>
+                                        <input type="text" class="form-control" name="sobrenome" [(ngModel)]="user.lastname" #sobrenome="ngModel" required />
+                                        <div *ngIf="f.submitted && !sobrenome.valid" class="help-block">É obrigatório informar o sobrenome</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating is-empty" [ngClass]="{ 'has-error': f.submitted && !nome.valid }">
+                                        <label class="control-label">Email</label>
+                                        <input type="email" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" required />
+                                        <div *ngIf="f.submitted && !email.valid" class="help-block">É obrigatório informar o email</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating is-empty" [ngClass]="{ 'has-error': f.submitted && !login.valid }">
+                                        <label class="control-label">Login</label>
+                                        <input type="text" class="form-control" name="login" [(ngModel)]="user.username" #login="ngModel" required />
+                                        <div *ngIf="f.submitted && !login.valid" class="help-block">É obrigatório informar um login</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group form-black label-floating is-empty" [ngClass]="{ 'has-error': f.submitted && !senha.valid }">
+                                        <label class="control-label">Senha</label>
+                                        <input type="password" class="form-control" name="senha" [(ngModel)]="user.password" #senha="ngModel" required />
+                                        <div *ngIf="f.submitted && !senha.valid" class="help-block">É obrigatório informar uma senha</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating is-empty" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+                                        <label class="control-label">Time</label>
+                                        <input type="text" class="form-control" name="name" [(ngModel)]="team.name" #name="ngModel" required/>
+                                        <div *ngIf="f.submitted && !name.valid" class="help-block">É obrigatório informar o time</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-black label-floating is-empty" [ngClass]="{ 'has-error': f.submitted && !manager.valid }">
+                                        <label class="control-label">Técnico</label>
+                                        <input type="text" class="form-control" name="manager" [(ngModel)]="team.manager" #manager="ngModel" required />
+                                        <div *ngIf="f.submitted && !manager.valid" class="help-block">É obrigatório informar o técnico</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" [disabled]="loading" class="btn btn-primary background-gray-2">Registrar</button>
+                                <mat-spinner *ngIf="loading"></mat-spinner>
+                                <a [routerLink]="['/login']" class="btn btn-link background-gray-4 pull-right">Cancelar</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

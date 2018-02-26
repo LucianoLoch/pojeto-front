@@ -1,0 +1,27 @@
+<div class="row" *ngIf="team">
+    <div class="col-lg-4 col-md-6 col-sm-6">
+      <div class="card card-stats">        
+        <div class="card-content">
+          <p class="category">Time  <i class="material-icons">group</i></p>
+          <h3 class="title">{{ team?.name }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+      <div class="card card-stats">        
+        <div class="card-content">
+          <p class="category">Técnico <i class="material-icons">person</i></p>
+          <h3 class="title">{{ team?.manager }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+      <div class="card card-stats">        
+        <div class="card-content">
+          <p class="category">Dinheiro Disponível <i class="material-icons">attach_money</i></p>
+          <h3 class="title">R$ {{ team?.budget }},00</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  

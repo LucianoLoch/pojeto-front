@@ -1,0 +1,38 @@
+<div class="col-md-12">
+    <div class="card">
+        <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
+            <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
+    <span class="mat-title">Pesquisar</span>
+            </span>
+            <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
+    <span *ngIf="(selectable && !selectedRows.length) || !selectable" class="mat-title"></span>
+            <span *ngIf="selectedRows.length && selectable" class="mat-body-1">0 notificações(s) selecionadas</span>
+            </span>
+            <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Pesquisar..." (searchDebounce)="search($event)"
+                flex>
+            </td-search-box>
+        </div>
+    </div>
+</div>
+<mat-divider></mat-divider>
+
+<div class="col-md-12">
+    <div class="card">
+        <td-data-table #dataTable [data]="filteredData" [sortable]="true" [columns]="columns" (sortChange)="sort($event)" [(ngModel)]="selectedRows">
+        </td-data-table>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="card">
+        <div class="mat-padding" layout="row" layout-align="center center" *tdLoading="'overlayStarSyntax'; mode:'indeterminate'; type:'circle'; strategy:'overlay'; color:'primary'">
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="card">
+        <td-paging-bar #pagingBar2 [total]="bidinfoRest.totalElements" [pageSize]="pageSize" (change)="page($event)">
+            <span td-paging-bar-label hide-xs>Registros por página:</span> {{pagingBar2.range}} <span hide-xs>de {{bidinfoRest.totalElements}}</span>
+            <button mat-raised-button color="blue" (click)="onRefresh()" rel="tooltip" class="background-gray-4" title="Atualizar"><i class="fa fa-refresh"></i></button>
+        </td-paging-bar>
+    </div>
+</div>

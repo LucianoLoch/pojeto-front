@@ -1,0 +1,45 @@
+<div class="col-lg-6 col-md-12">
+    <div class="card">
+        <div class="card-content">
+            <h4 class="title">Lances Efetuados</h4>
+            <p *ngIf="bids?.length > 0" class="category">{{bids?.length}}</p>
+            <p *ngIf="bids?.length <= 0" class="category">Nenhum lance até o momento.</p>
+        </div>
+
+        <div *ngIf="bids?.length > 0" class="card-content table-responsive">
+            <td-expansion-panel>
+                <table class="table table-hover">
+                    <thead class="text-gray">
+                        <th>Jogador</th>
+                        <th>Posição</th>
+                        <th>Valor do Lance</th>
+                        <th>Valor Inicial</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let bidinfo of bids">
+                            <td>{{ bidinfo.playerName }}</td>
+                            <td>{{ bidinfo.position }}</td>
+                            <td>R$ {{ bidinfo.bidValue }},00</td>
+                            <td>R$ {{ bidinfo.originalValue }},00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="card-footer">
+                    <button mat-raised-button routerLink="/bid/list" class="background-gray-4" title="Atualizar">Ver Todos</button>
+                </div>
+            </td-expansion-panel>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-lg-6 col-md-6 col-sm-6">
+    <div class="card card-stats">
+        <div class="card-content">
+            <p class="category">Valor Gasto
+                <i class="material-icons">attach_money</i>
+            </p>
+            <h3 class="title">R$ {{ bidsValue }},00</h3>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+<div class="main-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <!--<div class="col-lg-12 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="category">Ordenação: <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i></h3>
+                    </div>
+                    <div class="card-footer">
+                        <td-chips color="primary" [items]="filteredObjects" [(ngModel)]="objectsModel" placeholder="Digite a Ordenação..." (inputChange)="filterObjects($event)"
+                            requireMatch>
+                            <ng-template td-chip let-chip="chip">
+                                {{chip.name}}
+                            </ng-template>
+                            <ng-template td-autocomplete-option let-option="option">
+                                <div layout="row" layout-align="start center">
+                                    {{option.name}}
+                                </div>
+                            </ng-template>
+                        </td-chips>
+
+                    </div>
+                </div>
+            </div>-->
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-content">
+                        <h3 class="category">Jogador
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </h3>
+                        <mat-input-container class="title">
+                            <input matInput placeholder="Filtar por Nome" [matAutocomplete]="auto" [formControl]="playerCtrl" [(ngModel)]="playerFilter.name">
+                        </mat-input-container>
+                        <mat-autocomplete class="title" #auto="matAutocomplete">
+                            <mat-option (input)="onInputPlayer(player.name)" *ngFor="let player of filteredPlayers | async" [value]="player.name">
+                                {{player.name}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-content">
+                        <h3 class="category">Posição
+                            <i class="fa fa-street-view" aria-hidden="true"></i>
+                        </h3>
+                        <mat-input-container>
+                            <input matInput placeholder="Filtar por posição" [matAutocomplete]="position" [formControl]="positionsCtrl" [(ngModel)]="playerFilter.position">
+                        </mat-input-container>
+                        <mat-autocomplete #position="matAutocomplete">
+                            <mat-option *ngFor="let position of filteredPositions | async" [value]="position">
+                                {{position}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-content">
+                        <h3 class="category">Liga
+                            <i class="fa fa-flag" aria-hidden="true"></i>
+                        </h3>
+                        <mat-input-container>
+                            <input matInput placeholder="Filtar por Liga" [matAutocomplete]="leagues" [formControl]="leaguesCtrl" [(ngModel)]="leagueName">
+                        </mat-input-container>
+                        <mat-autocomplete #leagues="matAutocomplete">
+                            <mat-option *ngFor="let leagues of filteredLeagues | async" [value]="leagues.name">
+                                {{leagues.name}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-content">
+                        <h3 class="category">Rating
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="col-md-6">
+                            <p-slider [(ngModel)]="rangeValues" (onChange)="onInputRating($event)" [style]="{'width':'200px'}" [range]="true"></p-slider>
+                            <h5>{{rangeValues[0] + ' - ' + rangeValues[1]}}</h5>
+                        </div>
+                    </div>
+                </div>              
+                <!--
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <mat-expansion-panel class="background-gray-6">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Atributos Jogador</mat-panel-title>                       
+                    </mat-expansion-panel-header>
+                    <div *ngFor="let att of playerAttributes" class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-content">
+                                <h3 class="category">{{att.name}} </h3>
+                                <mat-input-container>
+                                    <input matInput placeholder="0 - 99" pattern="[0-9]" max="99" [max]="99" [min]="0" type="text" maxlength="2" value="att.value"
+                                        [(ngModel)]="att.value">
+                                </mat-input-container>
+                            </div>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <mat-expansion-panel class="background-gray-6">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Atributos Goleiros</mat-panel-title>                       
+                    </mat-expansion-panel-header>
+                    <div *ngFor="let attGk of gkAttributes" class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-content">
+                                <h3 class="category">{{attGk.name}} </h3>
+                                <mat-input-container>
+                                    <input matInput placeholder="0 - 99" pattern="[0-9]" max="99" [max]="99" [min]="0" type="text" maxlength="2" value="attGk.value"
+                                        [(ngModel)]="attGk.value">
+                                </mat-input-container>
+                            </div>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </div>  -->
+                <hr>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <button mat-raised-button class="background-gray" (click)="onFilter(playerFilter)">Filtrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
